@@ -1,0 +1,7 @@
+.scrollable {
+  overflow: hidden;
+}
+
+.scrollable__content {
+  margin-left: var(--scroll-delta, "0px");
+}

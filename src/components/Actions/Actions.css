@@ -1,0 +1,11 @@
+.actions {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  justify-content: space-between;
+  background-color: var(--color-white);
+}
+
+.actions__button {
+  margin-right: -4px;
+}
