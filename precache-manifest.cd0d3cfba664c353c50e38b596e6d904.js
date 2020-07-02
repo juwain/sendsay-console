@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0293e2ca55cdb90009da6836ec13bcd2",
+    "revision": "833b2eece2841c661ae91d5562efaf04",
     "url": "/sendsay-console/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sendsay-console/static/css/2.fe1c1d21.chunk.css"
   },
   {
-    "revision": "d2a48c845e2bd3c1e113",
-    "url": "/sendsay-console/static/css/main.0647fa83.chunk.css"
+    "revision": "1c6e2456f56d89fb1d81",
+    "url": "/sendsay-console/static/css/main.d31c920e.chunk.css"
   },
   {
     "revision": "1414fccc392a017e3941",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sendsay-console/static/js/2.f2746fff.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d2a48c845e2bd3c1e113",
-    "url": "/sendsay-console/static/js/main.6aad4514.chunk.js"
+    "revision": "1c6e2456f56d89fb1d81",
+    "url": "/sendsay-console/static/js/main.2aaf89da.chunk.js"
   },
   {
     "revision": "9fced8c04fbb142461fe",
