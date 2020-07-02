@@ -1,0 +1,20 @@
+.login-container {
+  display: flex;
+  height: 100%;
+  min-height: 650px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-container__header {
+  margin-top: 20px;
+}
+
+.login-container__form {
+  margin: 17px 20px 20px;
+}
+
+.login-container__footer {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,23 @@
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.separator__drag-button {
+  padding: 50px 2px;
+  color: var(--color-gray-transparent--20);
+}
+
+.separator__drag-button:hover,
+.separator__drag-button:focus {
+  color: var(--color-gray-transparent--40);
+}
+
+.separator__drag-button:active {
+  cursor: col-resize;
+}
+
+.separator__drag-button:active svg {
+  color: var(--color-gray-dark);
+}
