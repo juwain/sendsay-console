@@ -4,6 +4,7 @@ import { SendsayContext } from '../../context/SendsayContext';
 import { Button } from '../Button/Button';
 import { Alert } from '../Alert/Alert';
 import { formatJSON, validate } from '../../utils';
+import { actionTypes } from '../../redux/actions';
 import './LoginForm.css';
 
 const LoginForm = ({ className }) => {
@@ -55,7 +56,7 @@ const LoginForm = ({ className }) => {
       password
     }).then(() =>
       dispatch({
-        type: 'login',
+        type: actionTypes.LOGIN,
         session: sendsay.session
       })
     ).catch(error => {

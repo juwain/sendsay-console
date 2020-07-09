@@ -6,6 +6,7 @@ import { RequestDropdown } from '../RequestDropdown/RequestDropdown';
 import { Scrollable } from '../Scrollable/Scrollable';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { formatJSON } from '../../utils';
+import { actionTypes } from '../../redux/actions';
 import { ReactComponent as IconCross } from './icon-cross.svg';
 import './History.css';
 
@@ -19,7 +20,7 @@ const History = ({
   const requestHistory = useSelector(state => state.requestHistory);
 
   const clearHistory = () => dispatch({
-    type: 'clearHistory'
+    type: actionTypes.CLEAR_HISTORY
   });
 
   const handleLoad = (historyItem) => onLoadRequestFromHistory(historyItem);
@@ -34,7 +35,7 @@ const History = ({
 
   const handleDelete = ({ request }) => {
     dispatch({
-      type: 'removeRequestFromHistory',
+      type: actionTypes.REMOVE_REQUEST_FROM_HISTORY,
       request
     });
   }

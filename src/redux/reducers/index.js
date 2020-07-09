@@ -1,5 +1,5 @@
 import { isEqual } from '../../utils';
-import { actionTypes } from '../actionTypes';
+import { actionTypes } from '../actions';
 
 const initialState = {
   session: null,
@@ -30,31 +30,10 @@ export const reducer = (state = initialState, action) => {
       };
 
     // history
-    case actionTypes.PREPEND_REQUEST_TO_HISTORY:
-      // работаем с копией массива истории запросов
-      const requestHistoryCopy = state.requestHistory.slice();
-
-      // добавляем элемент в начало массива
-      requestHistoryCopy.unshift(action.historyItem);
-
+    case actionTypes.REPLACE_HISTORY:
       return {
         ...state,
-        requestHistory: requestHistoryCopy
-      };
-    case actionTypes.PREPEND_EXISTING_REQUEST_TO_HISTORY:
-      // работаем с копией массива истории запросов
-      let requestHistoryFilteredCopy = state.requestHistory.slice();
-
-      // убираем элемент и массива
-      requestHistoryFilteredCopy = requestHistoryFilteredCopy.filter(item =>
-        !isEqual(item.request, action.historyItem.request)
-      );
-
-      // а затем добавляем элемент в начало
-      requestHistoryFilteredCopy.unshift(action.historyItem);
-      return {
-        ...state,
-        requestHistory: requestHistoryFilteredCopy
+        requestHistory: action.requestHistory
       };
     case actionTypes.REMOVE_REQUEST_FROM_HISTORY:
       return {

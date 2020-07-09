@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Editor } from '../Editor/Editor';
 import { Separator } from '../Separator/Separator';
 import { setPropertyValue } from '../../utils';
+import { actionTypes } from '../../redux/actions';
 import './EditorsSet.css';
 
 const EditorsSet = ({
@@ -23,7 +24,7 @@ const EditorsSet = ({
     - добавить ограничение про минимальную ширину
     */
     dispatch({
-      type: 'setEditorsResizeDelta',
+      type: actionTypes.SET_EDITORS_RESIZE_DELTA,
       delta: event.movementX
     });
   }

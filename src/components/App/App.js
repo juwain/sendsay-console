@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LoginContainer } from '../LoginContainer/LoginContainer';
 import { Console } from '../Console/Console';
 import { SendsayContext } from '../../context/SendsayContext';
+import { actionTypes } from '../../redux/actions';
 import './App.css';
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
       action: 'pong'
     }).then(({ account, sublogin }) =>
       dispatch({
-        type: 'setUserData',
+        type: actionTypes.SET_USER_DATA,
         userData: {
           account,
           sublogin
@@ -25,7 +26,7 @@ const App = () => {
     ).catch(error => {
       if (error.id === 'error/auth/failed') {
         dispatch({
-          type: 'logout'
+          type: actionTypes.LOGOUT
         });
       }
     })

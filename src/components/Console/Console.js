@@ -6,7 +6,7 @@ import { EditorsSet } from '../EditorsSet/EditorsSet';
 import { Actions } from '../Actions/Actions';
 import { SendsayContext } from '../../context/SendsayContext';
 import { formatJSON } from '../../utils';
-import { isEqual } from '../../utils';
+import { prependRequestToHistory } from '../../redux/actions';
 import './Console.css';
 
 const Console = () => {
@@ -43,37 +43,10 @@ const Console = () => {
     setResponseJSON(formatJSON(response));
     setResponseValidity(status);
 
-    const historyItem = {
-      request,
-      response,
-      status
-    };
-
-    // проверяем, выполнялся ли подобный запрос ранее
-    // (есть ли он в истории запросов)
-    const includedElement = requestHistory.filter(item =>
-      isEqual(item.request, historyItem.request)
-    );
-
-    // если такого запроса ещё нет в истории
-    // то  переходим к добавлению запроса в начало истории
-    if (includedElement.length === 0) {
-      // если в истории уже есть максимум запросов или меньше,
-      // то выполняем добавление запроса в историю
-      if (requestHistory.length < 15) {
-        dispatch({
-          type: 'prependRequestToHistory',
-          historyItem
-        })
-      }
-    // если запрос уже есть в истории,
-    // то выполняем перенос запроса в начало истории
-    } else {
-      dispatch({
-        type: 'prependExistingRequestToHistory',
-        historyItem: includedElement[0]
-      })
-    }
+    dispatch(prependRequestToHistory(
+      requestHistory,
+      { request, response, status }
+    ));
   }
 
   const performRequest = () => {

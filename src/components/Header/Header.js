@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SendsayContext } from '../../context/SendsayContext';
 import { Button } from '../Button/Button';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
+import { actionTypes } from '../../redux/actions';
 import { ReactComponent as IconLogout } from './icon-logout.svg';
 import { ReactComponent as IconFullScreen } from './icon-fullscreen.svg';
 import { ReactComponent as IconPartScreen } from './icon-partscreen.svg';
@@ -36,7 +37,7 @@ const Header = ({ className, mainRef }) => {
       console.log(error)
     ).finally(() => {
       dispatch({
-        type: 'logout'
+        type: actionTypes.LOGOUT
       })
     })
   }
