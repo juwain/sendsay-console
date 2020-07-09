@@ -1,5 +1,7 @@
 import { isEqual } from '../../utils';
 
+const MAX_HISTORY_SIZE = 15;
+
 export const actionTypes = {
   // user
   LOGIN: 'login',
@@ -15,36 +17,27 @@ export const actionTypes = {
   SET_EDITORS_RESIZE_DELTA: 'setEditorsResizeDelta'
 }
 
-
 // action creators
 export const prependRequestToHistory = (requestHistory, newHistoryItem) => {
-  // // работаем с копией массива истории запросов
+  // работаем с копией массива истории запросов
   let requestHistoryCopy = requestHistory.slice();
 
-  // проверяем, выполнялся ли подобный запрос ранее
-  // (есть ли он в истории запросов)
-  const includedElement = requestHistoryCopy.filter(item =>
-    isEqual(item.request, newHistoryItem.request)
-  );
-
-  // если такого запроса ещё нет в истории
-  // то  переходим к добавлению запроса в начало истории
-  if (includedElement.length === 0) {
-    // если в истории уже есть максимум запросов или меньше,
-    // то выполняем добавление запроса в историю
-    if (requestHistoryCopy.length < 15) {
-      // добавляем элемент в начало массива
-      requestHistoryCopy.unshift(newHistoryItem);
-    }
-    // если запрос уже есть в истории,
-    // то выполняем перенос запроса в начало истории
-  } else {
-    // убираем элемент и массива
-    requestHistoryCopy = requestHistoryCopy.filter(item =>
-      !isEqual(item.request, newHistoryItem.request)
+  // проверяем на ограничение по количеству элементов в истории
+  if (requestHistoryCopy.length < MAX_HISTORY_SIZE) {
+    // проверяем, выполнялся ли подобный запрос ранее
+    // (есть ли он в истории запросов)
+    const foundElement = requestHistoryCopy.find(item =>
+      isEqual(item.request, newHistoryItem.request)
     );
 
-    // а затем добавляем элемент в начало
+    // если элемент есть в истории, то убираем элемент из массива
+    if (foundElement) {
+      requestHistoryCopy = requestHistoryCopy.filter(item =>
+        !isEqual(item.request, newHistoryItem.request)
+      );
+    }
+
+    // добавляем элемент первым в массив
     requestHistoryCopy.unshift(newHistoryItem);
   }
 
