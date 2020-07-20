@@ -1,5 +1,6 @@
 import { isEqual } from '../../utils';
 import { actionTypes } from '../actions';
+import { prependRequestToHistory } from '../../service';
 
 const initialState = {
   session: null,
@@ -30,10 +31,13 @@ export const reducer = (state = initialState, action) => {
       };
 
     // history
-    case actionTypes.REPLACE_HISTORY:
+    case actionTypes.PREPEND_REQUEST_TO_HISTORY:
       return {
         ...state,
-        requestHistory: action.requestHistory
+        requestHistory: prependRequestToHistory(
+          state.requestHistory,
+          action.newHistoryItem
+        )
       };
     case actionTypes.REMOVE_REQUEST_FROM_HISTORY:
       return {

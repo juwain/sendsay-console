@@ -6,8 +6,8 @@ import { EditorsSet } from '../EditorsSet/EditorsSet';
 import { Actions } from '../Actions/Actions';
 import { SendsayContext } from '../../context/SendsayContext';
 import { formatJSON } from '../../utils';
-import { prependRequestToHistory } from '../../redux/actions';
 import './Console.css';
+import { actionTypes } from '../../redux/actions';
 
 const Console = () => {
   const sendsay = useContext(SendsayContext);
@@ -21,7 +21,6 @@ const Console = () => {
 
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
-  const requestHistory = useSelector(state => state.requestHistory);
 
   const mainRef = useRef();
 
@@ -43,10 +42,10 @@ const Console = () => {
     setResponseJSON(formatJSON(response));
     setResponseValidity(status);
 
-    dispatch(prependRequestToHistory(
-      requestHistory,
-      { request, response, status }
-    ));
+    dispatch({
+      type: actionTypes.PREPEND_REQUEST_TO_HISTORY,
+      newHistoryItem: { request, response, status }
+    });
   }
 
   const performRequest = () => {
