@@ -1,0 +1,31 @@
+.console {
+  display: grid;
+  height: 100%;
+  min-height: 520px;
+  grid-template-areas:
+    "header"
+    "history"
+    "editors-set"
+    "actions";
+  grid-template-rows: repeat(2, 50px) 1fr 70px;
+  outline: 1px solid var(--color-gray-transparent--20);
+}
+
+.console__header {
+  grid-area: header;
+  border-bottom: 1px solid var(--color-gray-transparent--20);
+}
+
+.console__history {
+  grid-area: history;
+  border-bottom: 1px solid var(--color-gray-transparent--20);
+}
+
+.console__editors-set {
+  grid-area: editors-set;
+  border-bottom: 1px solid var(--color-gray-transparent--20);
+}
+
+.console__actions {
+  grid-area: actions;
+}

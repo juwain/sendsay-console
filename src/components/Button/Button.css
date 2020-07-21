@@ -1,0 +1,86 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.button:hover,
+.button:focus {
+  color: var(--color-blue);
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px var(--color-sky-blue-transparent--50);
+  outline: 2px solid transparent;
+}
+
+.button--transparent {
+  background-color: transparent;
+}
+
+.button--rounded {
+  border-radius: 5px;
+}
+
+.button--padded {
+  padding: 4px;
+}
+
+/* TODO:
+- сделать focus с цветом --color-sky-blue-transparent--50
+- применить border-radius только к прозрачным кнопкам в шапке и подвале
+*/
+
+.button--primary {
+  min-width: 120px;
+  min-height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 5px 15px;
+}
+
+.button--blue {
+  background: linear-gradient(180deg, var(--color-sky-blue) 0%, var(--color-blue) 100%), var(--color-gray-light);
+
+  color: var(--color-white);
+}
+
+.button--blue:hover,
+.button--blue:focus {
+  color: var(--color-white);
+}
+
+.button--blue:hover {
+  background:
+    linear-gradient(0deg, var(--color-white-transparent--15), var(--color-white-transparent--15)),
+    linear-gradient(180deg, var(--color-sky-blue) 0%, var(--color-blue) 100%),
+    var(--color-gray-light);
+}
+
+.button--blue:active {
+  background:
+    linear-gradient(0deg, var(--color-gray-transparent--15), var(--color-gray-transparent--15)),
+    linear-gradient(180deg, var(--color-sky-blue) 0%, var(--color-blue) 100%),
+    var(--color-gray-light);
+}
+
+.button--blue:disabled {
+  background:
+    linear-gradient(0deg, var(--color-gray-light), var(--color-gray-light)),
+    linear-gradient(180deg, var(--color-sky-blue) 0%, var(--color-blue) 100%);
+}
+
+.button--text-right .button__text {
+  margin-left: 11px;
+}
+
+.button--text-left .button__text {
+  margin-right: 11px;
+}

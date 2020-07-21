@@ -1,0 +1,22 @@
+.editors-set {
+  --separator-width: 10px;
+  --resize-delta: 0;
+  --resize-anti-delta: calc(var(--resize-delta) * -1);
+
+  position: relative;
+  display: flex;
+  padding: 10px 15px 15px;
+  background-color: var(--color-white);
+}
+
+.editors-set__item {
+  width: calc(50% + var(--resize-delta) - var(--separator-width) / 2);
+}
+
+.editors-set__item--response {
+  --resize-delta: var(--resize-anti-delta);
+}
+
+.editors-set__separator {
+  width: var(--separator-width);
+}
